@@ -425,6 +425,15 @@
         function openGift() {
             if(giftOpened) return;
             giftOpened = true;
+
+            // --- ADD THIS LINE FOR ANALYTICS ---
+    gtag('event', 'gift_opened', {
+        'event_category': 'interaction',
+        'event_label': '3D Box Opened'
+    });
+    // -----------------------------------
+
+            
             document.getElementById('gift-box').classList.add('open');
             
             if(!isMuted) bgAudio.play().catch(e=>{});
@@ -445,6 +454,16 @@
             if (i < text.length) {
                 document.getElementById("type-name").innerHTML += text.charAt(i);
                 setTimeout(() => typeWriter(text, i + 1), 100);
+
+                // --- ADD THIS LINE FOR ANALYTICS ---
+    // This tracks that a wish was generated
+    gtag('event', 'wish_generated', {
+        'event_category': 'engagement',
+        'sender_name': name // WARNING: Google technically discourages sending real names (PII), but many viral scripts do it.
+    });
+    // -----------------------------------
+
+                
             } else {
                 document.querySelector(".cursor").style.opacity = "0";
             }
