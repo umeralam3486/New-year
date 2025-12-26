@@ -342,10 +342,31 @@
             <div id="share-view" class="input-area hidden">
                 <p style="color:#25D366; font-weight:bold; margin-bottom:15px;">Link Ready! Share Now:</p>
                 <div style="display:grid; grid-template-columns:1fr 1fr; gap:10px;">
-                    <a href="#" id="wa-btn" class="btn btn-wa" target="_blank" style="grid-column:span 2;"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-                    <button class="btn btn-insta" onclick="shareNative('Instagram')"><i class="fab fa-instagram"></i> Instagram</button>
-                    <button class="btn btn-snap" onclick="shareNative('Snapchat')"><i class="fab fa-snapchat-ghost"></i> Snapchat</button>
-                    <button class="btn btn-copy" onclick="copyLink()" style="grid-column:span 2;"><i class="fas fa-link"></i> Copy Link</button>
+    
+    <!-- WhatsApp: Tracks as 'WhatsApp' -->
+    <a href="#" id="wa-btn" class="btn btn-wa" target="_blank" style="grid-column:span 2;" 
+       onclick="gtag('event', 'share', {'method': 'WhatsApp', 'content_type': 'link'});">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+    </a>
+
+    <!-- Instagram: Tracks as 'Instagram' -->
+    <button class="btn btn-insta" 
+            onclick="shareNative('Instagram'); gtag('event', 'share', {'method': 'Instagram', 'content_type': 'link'});">
+        <i class="fab fa-instagram"></i> Instagram
+    </button>
+
+    <!-- Snapchat: Tracks as 'Snapchat' -->
+    <button class="btn btn-snap" 
+            onclick="shareNative('Snapchat'); gtag('event', 'share', {'method': 'Snapchat', 'content_type': 'link'});">
+        <i class="fab fa-snapchat-ghost"></i> Snapchat
+    </button>
+
+    <!-- Copy Link: Tracks as 'Copy Link' -->
+    <button class="btn btn-copy" style="grid-column:span 2;" 
+            onclick="copyLink(); gtag('event', 'share', {'method': 'Copy Link', 'content_type': 'link'});">
+        <i class="fas fa-link"></i> Copy Link
+    </button>
+
                 </div>
                 <button onclick="resetApp()" style="background:none; border:none; color:#888; text-decoration:underline; cursor:pointer; margin-top:15px;">Create Another</button>
             </div>
